@@ -15,7 +15,6 @@ import { AdministradorRoutingModule } from './administrador-routing.module';
 @NgModule({
   declarations: [
     HomeComponent,
-    AddUserComponent,
     EditUserComponent,
     ViewUserComponent,
     ViewReportComponent,
@@ -25,7 +24,8 @@ import { AdministradorRoutingModule } from './administrador-routing.module';
   ],
   imports: [
     CommonModule,
-    AdministradorRoutingModule
+    AdministradorRoutingModule,
+    AddUserComponent,
   ]
 })
 export class AdministradorModule { }
