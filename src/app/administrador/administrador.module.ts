@@ -16,7 +16,6 @@ import { AdministradorRoutingModule } from './administrador-routing.module';
   declarations: [
     HomeComponent,
     EditUserComponent,
-    ViewUserComponent,
     ViewReportComponent,
     AddProductComponent,
     EditProductComponent,
@@ -26,6 +25,7 @@ import { AdministradorRoutingModule } from './administrador-routing.module';
     CommonModule,
     AdministradorRoutingModule,
     AddUserComponent,
+    ViewUserComponent,
   ]
 })
 export class AdministradorModule { }
