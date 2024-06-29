@@ -10,8 +10,10 @@ export class UserService {
   constructor(private http: HttpClient) {}
   private apiUrl = 'http://localhost:3000/user';
 
-  async getAll(): Promise<User[]> {
-    return await firstValueFrom(this.http.get<User[]>(this.apiUrl));
+  async getAll(qs:string):Promise<any> {
+    let url = `http://localhost:3000/user${qs}`;
+    
+    return await firstValueFrom(this.http.get<any>(url));
   }
 
   async register(userData: User): Promise<User> {
