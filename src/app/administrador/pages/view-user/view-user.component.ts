@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
-import { User } from '../../../models/User';
-import { UserService } from '../../../Services/user.service';
+import { User } from '../../../core/models/User';
+import { UserService } from '../../../core/services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TooltipModule } from 'primeng/tooltip';
 @Component({
