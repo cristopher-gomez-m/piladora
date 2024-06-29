@@ -8,8 +8,14 @@ import { User } from '../models/User';
 })
 export class UserService {
   constructor(private http: HttpClient) {}
-  async getAll():Promise<User[]> {
-    let url = 'http://localhost:3000/user';
-    return await firstValueFrom(this.http.get<User[]>(url));
+  private apiUrl = 'http://localhost:3000/user';
+
+  async getAll(): Promise<User[]> {
+    return await firstValueFrom(this.http.get<User[]>(this.apiUrl));
   }
+
+  async register(userData: User): Promise<User> {
+    return await firstValueFrom(this.http.post<User>(this.apiUrl, userData));
+  }
+
 }

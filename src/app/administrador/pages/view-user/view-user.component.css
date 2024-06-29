@@ -5,3 +5,13 @@
   }
   
   /* Asegúrate de que el color del texto sea visible en el botón rojo */
+h2 {
+    color: #007bff;
+    text-align: center;
+  }
+
+  .p-button {
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }

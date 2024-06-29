@@ -10,7 +10,7 @@ import { TooltipModule } from 'primeng/tooltip';
   standalone: true,
   templateUrl: './view-user.component.html',
   styleUrls: ['./view-user.component.css'],
-  imports: [TableModule,HttpClientModule,ButtonModule,TooltipModule],
+  imports: [TableModule, HttpClientModule,ButtonModule,TooltipModule],
   providers: [UserService]
 })
 export class ViewUserComponent implements OnInit{

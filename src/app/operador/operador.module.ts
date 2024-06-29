@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ViewProductOpComponent } from './pages/view-product-op/view-product-op.component';
 import { EditProductOpComponent } from './pages/edit-product-op/edit-product-op.component';
 import { OperadorRoutingModule } from './operador-routing.module';
-
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { OperadorRoutingModule } from './operador-routing.module';
   ],
   imports: [
     CommonModule,
-    OperadorRoutingModule
+    OperadorRoutingModule,
+    MaterialModule
   ]
 })
 export class OperadorModule { }
