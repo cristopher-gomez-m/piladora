@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angu
 import { CommonModule } from '@angular/common';
 import { Table, TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
-
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
@@ -35,8 +34,12 @@ export class TableComponent implements OnInit {
   @Input() showActions: boolean = false;
   @Input() canModify: boolean = false;
   @Input() canDelete: boolean = false;
+  @Input() showAddButton: boolean = false;
 
   @Output() action: EventEmitter<Accion> = new EventEmitter();
+  @Output() add: EventEmitter<void> = new EventEmitter();
+  @Output() modify: EventEmitter<any> = new EventEmitter();
+  @Output() delete: EventEmitter<any> = new EventEmitter();
 
   ngOnInit(): void {}
 
@@ -49,14 +52,18 @@ export class TableComponent implements OnInit {
   }
 
   onModify(product: any) {
-    console.log('Modify', product);
+    this.modify.emit(product);
   }
 
   onDelete(product: any) {
-    console.log('Delete', product);
+    this.delete.emit(product);
   }
 
-  onAction(accion: string, row?:any){
-    this.action.emit({accion: accion, fila:row});
+  onAdd() {
+    this.add.emit();
+  }
+
+  onAction(accion: string, row?: any) {
+    this.action.emit({ accion: accion, fila: row });
   }
 }

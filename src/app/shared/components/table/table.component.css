@@ -1,0 +1,17 @@
+
+:host ::ng-deep .p-datatable-tbody > tr {
+  height: 30px; /* Ajusta esta altura según sea necesario */
+}
+
+:host ::ng-deep .p-datatable-tbody > tr > td {
+  padding: 5px 10px; /* Ajusta el padding según sea necesario */
+}
+
+:host ::ng-deep .p-datatable-tbody > tr > td > button {
+  margin-right: 5px; /* Ajusta el margen de los botones si es necesario */
+}
+
+.card {
+  margin: 20px; /* Opcional: agrega margen alrededor de la tarjeta para espaciarla de otros elementos */
+  padding: 10px; /* Opcional: agrega padding dentro de la tarjeta para espaciar el contenido */
+}
