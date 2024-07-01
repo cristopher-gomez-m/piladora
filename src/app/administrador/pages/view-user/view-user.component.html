@@ -26,6 +26,7 @@
           icon="pi pi-trash"
           pTooltip="Eliminar"
           tooltipPosition="top"
+          (click)="delete($event,user.id)"
           styleClass="p-button-sm"
           severity="danger"
         ></p-button>
@@ -33,6 +34,10 @@
     </tr>
   </ng-template>
 </p-table>
+
+<p-toast />
+<p-confirmDialog />
+
 
 <p-paginator
 [rows]="limit"
