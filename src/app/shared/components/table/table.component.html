@@ -1,44 +1,45 @@
 <div class="card">
-  <div class="p-d-flex p-jc-between p-ai-center p-mb-3">
-    <button *ngIf="showAddButton" (click)="onAdd()" pButton pRipple type="button" icon="pi pi-plus" label="Add"></button>
-    <p-iconField iconPosition="right">
-      <p-inputIcon>
-        <i class="pi pi-search"></i>
-      </p-inputIcon>
-      <input
-        pInputText
-        type="text"
-        (input)="onGlobalFilter($event)"
-        placeholder="Search"
-      />
-    </p-iconField>
+  <div class="shear-add flex flex-row-reverse flex-wrap">
+    <div class="bt-agg">
+    <button *ngIf="showAddButton" (click)="onAdd()" pButton pRipple type="button" icon="pi pi-plus"
+      label="Add"></button>
+    </div>
+        <p-iconField iconPosition="right">
+          <p-inputIcon>
+            <i class="pi pi-search"></i>
+          </p-inputIcon>
+          <input class="" pInputText type="text" (input)="onGlobalFilter($event)" placeholder="Search" />
+        </p-iconField>
+
   </div>
 
-  <p-table
-    #dt2
-    [value]="data"
-    [paginator]="true"
-    [rows]="rows"
-    [rowsPerPageOptions]="rowsPerPageOptions"
-    [sortOrder]="-1"
-    [tableStyle]="{ 'min-width': '60rem' }"
-    [globalFilterFields]="globalFilterFields"
-  >
+  <p-table #dt2 [value]="data" [paginator]="true" [rows]="rows" [rowsPerPageOptions]="rowsPerPageOptions"
+    [sortOrder]="-1" [loading]="loading" [tableStyle]="{ 'min-width': '60rem' }"
+    [globalFilterFields]="globalFilterFields">
     <ng-template pTemplate="header">
       <tr>
         <th *ngFor="let col of columns" [pSortableColumn]="col.field" [style.width]="col.width">
           {{ col.header }} <p-sortIcon [field]="col.field"></p-sortIcon>
         </th>
-        <th *ngIf="showActions" style="width: 20%">Actions</th>
+        <th *ngIf="showActions" style="width: 15%">Actions</th>
       </tr>
     </ng-template>
 
     <ng-template pTemplate="body" let-product>
       <tr>
-        <td *ngFor="let col of columns">{{ product[col.field] }}</td>
+        <td *ngFor="let col of columns">
+          <ng-container *ngIf="col.pipe; else noPipe">
+            {{ product[col.field] | dynamicPipe: col.pipe: col.pipeArgs }}
+          </ng-container>
+          <ng-template #noPipe>
+            {{ product[col.field] }}
+          </ng-template>
+        </td>
         <td *ngIf="showActions">
-          <button *ngIf="canModify" (click)="onModify(product)" pButton pRipple type="button" icon="pi pi-pencil" class="p-button-rounded p-button-info p-button-text"></button>
-          <button *ngIf="canDelete" (click)="onDelete(product)" pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-text"></button>
+          <button *ngIf="canModify" (click)="onModify(product)" pButton pRipple type="button" icon="pi pi-pencil"
+            class="p-button-rounded p-button-info p-button-text"></button>
+          <button *ngIf="canDelete" (click)="onDelete(product)" pButton pRipple type="button" icon="pi pi-trash"
+            class="p-button-rounded p-button-danger p-button-text"></button>
         </td>
       </tr>
     </ng-template>

@@ -24,16 +24,13 @@ export class ListProductComponent {
     { id: 11, name: 'Arros K', peso: 41, precio: 51.5, categoria: 'integral', status: 1 },
 ];
 
-
     columns = [
       { field: 'name', header: 'Name', width: '20%' },
       { field: 'peso', header: 'peso', width: '10%' },
-      { field: 'precio', header: 'precio', width: '10%' },
+      { field: 'precio', header: 'precio', width: '10%', pipe: 'currency', pipeArgs: 'USD' },
       { field: 'categoria', header: 'categoria', width: '15%' },
       { field: 'status', header: 'status', width: '10%' }
     ];
-
-    globalFilterFields = ['name'];
 
     onAddProduct() {
       console.log('Add product');
@@ -49,4 +46,8 @@ export class ListProductComponent {
       console.log('Delete product', product);
       // Lógica para eliminar un producto
     }
+
+    // deleteProduct(id: number) {
+    //   this.products = this.products.filter(product => product.id !== id);
+    // }
 }

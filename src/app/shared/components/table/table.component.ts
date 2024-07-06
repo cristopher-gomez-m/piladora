@@ -1,12 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
 import { Table, TableModule } from 'primeng/table';
 import { FormsModule } from '@angular/forms';
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-import { Accion } from '../../../core/models/tabla-column-action';
+import { Accion, TableColumns } from '../../../core/models/tabla-column-action';
+import { DynamicPipe } from '../../pipes/pipescolumn-value.pipe';
+
 
 @Component({
   selector: 'app-table',
@@ -18,19 +20,21 @@ import { Accion } from '../../../core/models/tabla-column-action';
     FormsModule,
     InputTextModule,
     IconFieldModule,
-    ButtonModule
+    ButtonModule,
+    DynamicPipe
   ],
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
+  providers: [CurrencyPipe, DatePipe, DecimalPipe],
 })
 export class TableComponent implements OnInit {
   @ViewChild('dt2') table: Table | undefined;
 
   @Input() data: any[] = [];
-  @Input() columns: any[] = [];
+  @Input() columns!: TableColumns[];
   @Input() globalFilterFields: string[] = [];
-  @Input() rows: number = 10;
-  @Input() rowsPerPageOptions: number[] = [10, 25, 50];
+  @Input() rows: number = 5;
+  @Input() rowsPerPageOptions: number[] = [5, 10, 20];
   @Input() showActions: boolean = false;
   @Input() canModify: boolean = false;
   @Input() canDelete: boolean = false;
@@ -41,7 +45,10 @@ export class TableComponent implements OnInit {
   @Output() modify: EventEmitter<any> = new EventEmitter();
   @Output() delete: EventEmitter<any> = new EventEmitter();
 
+  loading: boolean = false;
+
   ngOnInit(): void {}
+
 
   onGlobalFilter(event: Event) {
     const inputElement = event.target as HTMLInputElement;

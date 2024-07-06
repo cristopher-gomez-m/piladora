@@ -11,6 +11,14 @@
   margin-right: 5px; /* Ajusta el margen de los botones si es necesario */
 }
 
+.bt-agg{
+  margin-left: 20px;
+}
+
+.shear-add{
+  margin-bottom: 3rem;
+}
+
 .card {
   margin: 20px; /* Opcional: agrega margen alrededor de la tarjeta para espaciarla de otros elementos */
   padding: 10px; /* Opcional: agrega padding dentro de la tarjeta para espaciar el contenido */
