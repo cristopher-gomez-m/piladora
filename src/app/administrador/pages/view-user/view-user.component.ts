@@ -1,4 +1,5 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { User } from '../../../core/models/User';
@@ -9,13 +10,18 @@ import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
-
+import { InputGroupModule } from 'primeng/inputgroup';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { InputTextModule } from 'primeng/inputtext';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-view-user',
   standalone: true,
   templateUrl: './view-user.component.html',
   styleUrls: ['./view-user.component.css'],
   imports: [
+    CommonModule,
     TableModule,
     HttpClientModule,
     ButtonModule,
@@ -23,18 +29,25 @@ import { ToastModule } from 'primeng/toast';
     PaginatorModule,
     ConfirmDialogModule,
     ToastModule,
+    InputGroupModule,
+    IconFieldModule,
+    InputIconModule,
+    InputTextModule,
   ],
   providers: [UserService, ConfirmationService, MessageService],
 })
 export class ViewUserComponent implements OnInit {
   public usuarios: User[] = [];
   public page: number = 1;
-  public limit: number = 3;
+  public limit: number = 10;
   public total: number = 0;
+  public first: number = 0;
+  public searchTerm: string = '';
   constructor(
     private UserService: UserService,
     private confirmationService: ConfirmationService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) {}
 
   async ngOnInit(): Promise<void> {
@@ -53,7 +66,8 @@ export class ViewUserComponent implements OnInit {
 
   async onPageChange(event: PaginatorState): Promise<void> {
     this.page = event.page! + 1; // Suma 1 porque PrimeNG usa índice base 0
-    const qs = `?page=${this.page}&limit=${this.limit}`;
+    this.first =event.page!;
+    const qs = `?page=${this.page}&limit=${this.limit}&search=${this.searchTerm}`;
     await this.getUsers(qs);
   }
 
@@ -71,7 +85,7 @@ export class ViewUserComponent implements OnInit {
       acceptLabel: 'Sí',
       accept: async () => {
         try {
-          const response:any = await this.UserService.delete(id);
+          const response: any = await this.UserService.delete(id);
           console.log(response);
           this.messageService.add({
             severity: 'info',
@@ -81,14 +95,25 @@ export class ViewUserComponent implements OnInit {
           this.page = 1;
           const qs = `?page=${this.page}&limit=${this.limit}`;
           await this.getUsers(qs);
-        } catch (error:any) {
+        } catch (error: any) {
           this.messageService.add({
             severity: 'error',
             summary: 'Error',
             detail: error.error.message,
-          })
+          });
         }
       },
     });
+  }
+
+  async onSearch() {
+    this.page = 1;
+    this.first = 0;
+    const qs = `?page=${this.page}&limit=${this.limit}&search=${this.searchTerm}`;
+    await this.getUsers(qs);
+  }
+
+  onAdd() {
+    this.router.navigate(['administrador/agregar-usuario']);
   }
 }

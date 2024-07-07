@@ -1,17 +1,35 @@
-.red-button {
-    background-color: red;
-    border-color: red;
-    color: red;
+
+  .user-list-container {
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 3rem;
+    padding: 2rem;
   }
   
-  /* Asegúrate de que el color del texto sea visible en el botón rojo */
-h2 {
-    color: #007bff;
-    text-align: center;
+  .shear-add{
+    margin-bottom: 3rem;
   }
 
-  .p-button {
-    text-decoration: none;
-    font-weight: bold;
-    margin-bottom: 20px;
+  .bt-agg{
+    margin-left: 20px;
+  }
+
+
+  .search-icon {
+    cursor: pointer;
+    font-size: 1.2em;
+    margin-right: 0.5rem;
+  }
+  
+
+  .input-group-small {
+    max-width: 250px; /* Ajusta esto según tus necesidades */
+  }
+  
+  .input-small {
+    width: 100%; /* Asegura que el input ocupe todo el espacio disponible en el p-inputGroup */
+  }
+  
+  .shear-add {
+    align-items: center; /* Alinea verticalmente los elementos */
   }
