@@ -13,13 +13,17 @@
 
 .bt-agg{
   margin-left: 20px;
+  margin-bottom: 1rem;
 }
 
 .shear-add{
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 .card {
   margin: 20px; /* Opcional: agrega margen alrededor de la tarjeta para espaciarla de otros elementos */
   padding: 10px; /* Opcional: agrega padding dentro de la tarjeta para espaciar el contenido */
+  max-width: 80%;
+  margin: 0 auto;
+  padding: 2rem;
 }

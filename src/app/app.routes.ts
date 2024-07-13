@@ -1,4 +1,3 @@
-import { PRODUCT_ROUTES } from './Product/product-routes';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/pages/login/login.component';
@@ -21,10 +20,6 @@ export const routes: Routes = [
   {
     path: 'operador',
     loadChildren: () => import ('./operador/operador.module').then( m => m.OperadorModule)
-  },
-  {
-    path: 'producto',
-    loadChildren: () => import('./Product/product-routes')
   },
   {
     path: 'login',

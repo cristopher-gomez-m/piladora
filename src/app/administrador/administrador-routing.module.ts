@@ -10,7 +10,7 @@ import { ViewUserComponent } from './pages/view-user/view-user.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent,
   },
   {

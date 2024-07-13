@@ -8,7 +8,6 @@ import { OperadorRoutingModule } from './operador-routing.module';
 
 @NgModule({
   declarations: [
-    ViewProductOpComponent,
     EditProductOpComponent
   ],
   imports: [
