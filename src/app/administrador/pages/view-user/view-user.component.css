@@ -127,3 +127,13 @@
   border: none !important;
   box-shadow: none !important;
 }
+
+
+
+.button-small {
+  height: 2rem; /* Asegúrate de que la altura coincida con la del input */
+  padding: 0 0.5rem; /* Ajusta el padding horizontal según sea necesario */
+  font-size: 15px; /* Opcional: ajusta el tamaño de la fuente para que coincida con el input */
+  line-height: 1; /* Ajusta la línea de altura para centrar el texto/icono verticalmente */
+  box-sizing: border-box; /* Asegura que el padding y border se incluyan en la altura total */
+}
