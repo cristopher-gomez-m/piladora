@@ -15,6 +15,8 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
+import { DialogModule } from 'primeng/dialog';
+
 @Component({
   selector: 'app-view-user',
   standalone: true,
@@ -33,11 +35,16 @@ import { CommonModule } from '@angular/common';
     IconFieldModule,
     InputIconModule,
     InputTextModule,
+    DialogModule,
   ],
   providers: [UserService, ConfirmationService, MessageService],
 })
 export class ViewUserComponent implements OnInit {
+  selectedUser: User = new User();
   public usuarios: User[] = [];
+  
+  
+  displayEditDialog: boolean = false;
   public page: number = 1;
   public limit: number = 10;
   public total: number = 0;
@@ -116,4 +123,30 @@ export class ViewUserComponent implements OnInit {
   onAdd() {
     this.router.navigate(['administrador/agregar-usuario']);
   }
+  editUser(user: User) {
+    console.log('Edit user:', user);  // Log selected user
+    this.selectedUser = { ...user }; 
+    this.displayEditDialog = true;
+  }
+
+  saveUser() {
+    this.UserService.updateUser(this.selectedUser).subscribe({
+      next: response => {
+        // Actualizar el usuario en la lista local
+        const index = this.usuarios.findIndex(u => u.id === this.selectedUser.id);
+        if (index !== -1) {
+          this.usuarios[index] = { ...this.selectedUser };
+        }
+        // Cerrar el diálogo de edición
+        this.displayEditDialog = false;
+        // Mostrar mensaje de éxito
+        this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Usuario actualizado exitosamente' });
+      },
+      error: error => {
+        // Manejar errores
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo actualizar el usuario' });
+      }
+    });
+  }
+  
 }

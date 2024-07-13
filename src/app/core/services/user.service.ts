@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { firstValueFrom } from 'rxjs';
-import { User } from '../models/User';
+import { firstValueFrom, Observable } from 'rxjs';
+
 import { ApiPaginatorResponse } from '../../administrador/interfaces/ApiPaginatorResponse';
 import { ApiResponse } from '../../administrador/interfaces/ApiResponse';
+import { User } from '../models/User';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,8 @@ import { ApiResponse } from '../../administrador/interfaces/ApiResponse';
 export class UserService {
   constructor(private http: HttpClient) {}
   private apiUrl = 'http://localhost:3000/user';
+
+ 
 
   async getAll(qs:string):Promise<ApiPaginatorResponse<User>> {
     let url = `http://localhost:3000/user${qs}`;
@@ -31,4 +34,9 @@ export class UserService {
     }
   }
 
+  updateUser(user: User): Observable<User> {
+    return this.http.put<User>(`${this.apiUrl}/${user.id}`, user);
+  }
+
+  
 }
