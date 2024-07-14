@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { TableComponent } from '../shared/components/table/table.component';
 
 
-
 @NgModule({
   declarations: [
     ViewProductOpComponent,
@@ -18,6 +17,7 @@ import { TableComponent } from '../shared/components/table/table.component';
     OperadorRoutingModule,
     HttpClientModule,
     TableComponent
+
   ]
 })
 export class OperadorModule { }

@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* altura del contenedor */
+    margin: 0; /* quita el margen por defecto */
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px; /* espacio adicional alrededor del contenedor */
+  }
+  
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 23px; /* separación entre campos */
+    width: 250px; /* ancho de los campos de texto */
+  }
+  
+  .form-field label {
+    margin-bottom: 10px; /* separación entre label y input */
+  }
+  
+  .form-field input,.form-field p-password {
+    width: 100%; /* ancho del input y password */
+  }
+
+  .p-button {
+    text-decoration: none;
+  }
+  
+  .p-button.font-bold.form-field {
+    font-weight: bold;
+  }
+
+
+  .form-image {
+    margin-bottom: 20px; /* Espacio entre la imagen y el primer campo */
+}

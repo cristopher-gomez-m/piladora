@@ -1,2 +1,39 @@
-/* estilos.css (o estilos.scss si estás usando SCSS) */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
 
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+h2 {
+  margin-bottom: 30px; /* más margen debajo del encabezado */
+  color: #007bff; /* color del texto del encabezado */
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 23px;
+  width: 250px;
+
+  input, p-password, p-dropdown {
+    width: 100%;
+  }
+}
+
+.form-field label {
+  margin-bottom: 10px;
+}
+
+.p-button {
+  text-decoration: none;
+  font-weight: bold;
+}
