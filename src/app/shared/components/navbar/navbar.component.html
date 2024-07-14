@@ -1,0 +1,17 @@
+<header class="navbar">
+  <div class="logo">
+    <img src="assets/img/piladora-log.webp" alt="Logo">
+  </div>
+  <nav class="nav">
+    <ul class="nav-menu">
+      <li *ngFor="let item of menuItems" [routerLink]="item.route" routerLinkActive="active" class="nav-item">
+        <i [ngClass]="'pi ' + item.icon"></i>
+        <span>{{ item.label }}</span>
+      </li>
+    </ul>
+    <div class="user-section" *ngIf="userRole">
+      <span class="user-role"> {{ userRole | uppercase }}</span>
+      <button pButton label="Cerrar sesión" (click)="logout()" class="p-button-secondary" icon="pi pi-sign-out" iconPos="right"></button>
+    </div>
+  </nav>
+</header>

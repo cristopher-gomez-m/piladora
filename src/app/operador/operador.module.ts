@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ViewProductOpComponent } from './pages/view-product-op/view-product-op.component';
 import { EditProductOpComponent } from './pages/edit-product-op/edit-product-op.component';
 import { OperadorRoutingModule } from './operador-routing.module';
-import { MaterialModule } from '../material/material.module';
+import { HttpClientModule } from '@angular/common/http';
+import { TableComponent } from '../shared/components/table/table.component';
 
 
 @NgModule({
@@ -14,7 +15,9 @@ import { MaterialModule } from '../material/material.module';
   imports: [
     CommonModule,
     OperadorRoutingModule,
-    MaterialModule
+    HttpClientModule,
+    TableComponent
+
   ]
 })
 export class OperadorModule { }
