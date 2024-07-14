@@ -36,6 +36,7 @@ export class RoleService {
 }
 
 export interface MenuItem {
+  name?: string;
   label: string;
   icon: string;
   route: string;

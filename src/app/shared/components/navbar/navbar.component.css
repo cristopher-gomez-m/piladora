@@ -9,11 +9,18 @@
   align-items: center;
   padding: 10px 20px;
   z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agregamos una sombra sutíl */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .logo img {
   height: 40px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .nav-menu {
@@ -21,6 +28,7 @@
   display: flex;
   margin: 0;
   padding: 0;
+  align-items: center;
 }
 
 .nav-item {
@@ -39,7 +47,7 @@
 
 .nav-item span {
   position: relative;
-  top: -2px; /* Ajuste para alinear verticalmente el texto con el ícono */
+  top: -2px;
 }
 
 .nav-item.active {
@@ -55,4 +63,33 @@
   width: 100%;
   height: 2px;
   background-color: #fff;
+}
+
+.user-section {
+  display: flex;
+  align-items: center;
+}
+
+.user-role {
+  font-size: 16px;
+  margin-right: 20px;
+  font-weight: bold; /* Este estilo hace que el rol del usuario sea negrita */
+}
+
+/* Estilos para los botones de PrimeNG */
+.p-button {
+  min-width: 120px;
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+.p-button-secondary {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.p-button-secondary:hover {
+  background-color: #fff;
+  color: #2ecc71;
 }

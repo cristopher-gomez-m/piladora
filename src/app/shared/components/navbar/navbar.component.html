@@ -9,5 +9,9 @@
         <span>{{ item.label }}</span>
       </li>
     </ul>
+    <div class="user-section" *ngIf="userRole">
+      <span class="user-role"> {{ userRole | uppercase }}</span>
+      <button pButton label="Cerrar sesión" (click)="logout()" class="p-button-secondary" icon="pi pi-sign-out" iconPos="right"></button>
+    </div>
   </nav>
 </header>
