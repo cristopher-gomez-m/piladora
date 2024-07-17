@@ -1,9 +1,0 @@
-
-::ng-deep .custom-dropdown .p-dropdown {
-  border-color: #4CAF50; /* Cambia el color del borde a verde */
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Agrega una sombra sutil */
-}
-
-::ng-deep .custom-dropdown .p-dropdown-label {
-  color: #4CAF50; /* Cambia el color del texto */
-}

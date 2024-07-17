@@ -6,13 +6,21 @@
   margin-bottom: 1rem;
 }
 
-.custom-input:focus, .custom-select:focus, .custom-dropdown .p-dropdown-label-container {
+::ng-deep .custom-dropdown .p-dropdown.ng-touched.ng-valid {
   border-color: #4CAF50; /* Cambia el color del borde a verde */
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Agrega una sombra sutil */
 }
 
-.custom-dropdown .p-dropdown {
-  width: 100%; /* Asegura que el dropdown ocupe todo el ancho del contenedor */
+::ng-deep .custom-dropdown .p-dropdown.ng-touched.ng-invalid {
+  border-color: red; /* Cambia el color del borde a rojo si es inválido */
+  box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); /* Agrega una sombra sutil */
+}
+
+::ng-deep .custom-input:focus,
+::ng-deep .custom-select:focus,
+::ng-deep .custom-dropdown.p-dropdown:focus {
+  border-color: #4CAF50; /* Cambia el color del borde a verde */
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Agrega una sombra sutil */
 }
 
 .custom-button {
@@ -35,10 +43,4 @@
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
-}
-
-.p-dropdown .p-dropdown-trigger:focus {
-  outline: none; /* Elimina el contorno de enfoque predeterminado */
-  border-color: #4CAF50; /* Cambia el color del borde */
-  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Agrega una sombra sutil */
 }

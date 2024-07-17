@@ -18,7 +18,14 @@ export class AddProductComponent implements OnInit{
 
   proveedores = [
     { label: 'Proveedor 1', value: 1 },
-    { label: 'Proveedor 2', value: 2 }
+    { label: 'Proveedor 2', value: 2 },
+    { label: 'Proveedor 3', value: 2 },
+    { label: 'Proveedor 4', value: 2 },
+    { label: 'Proveedor 5', value: 2 },
+    { label: 'Proveedor 6', value: 2 },
+    { label: 'Proveedor 7', value: 2 },
+    { label: 'Proveedor 8', value: 2 },
+    { label: 'Proveedor 9', value: 2 }
   ];
 
   marcas = [

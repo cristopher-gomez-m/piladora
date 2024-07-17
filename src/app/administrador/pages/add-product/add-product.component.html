@@ -1,17 +1,17 @@
-<p-dialog header="Agregar Productos" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '75vw', maxWidth: '900px'}">
+<p-dialog header="Agregar Productos" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '75vw', maxWidth: '900px', height: '70vh', maxHeight: '800px'}">
   <div class="formgrid grid p-fluid custom-form">
     <div class="field col-12 sm:col-6">
       <label for="codigo">Código</label>
-      <input pInputText id="codigo" type="text" pInputText [(ngModel)]="product.codigo" class="custom-input" placeholder="Ingrese el código"/>
+      <input pInputText id="codigo" type="text" [(ngModel)]="product.codigo" class="custom-input" placeholder="Ingrese el código"/>
     </div>
     <div class="field col-12 sm:col-6">
       <label for="categoria">Categoría</label>
-      <p-dropdown [options]="categorias" [(ngModel)]="product.categoria" placeholder="Seleccione una categoría" optionLabel="label" class="custom-dropdown"></p-dropdown>
+      <p-dropdown [options]="categorias" [(ngModel)]="product.categoria" placeholder="Seleccione una categoría" optionLabel="name" class="custom-dropdown"></p-dropdown>
     </div>
     <div class="field col-12 sm:col-6">
       <label for="peso">Peso por unidad</label>
       <div class="p-inputgroup">
-        <input pInputText id="peso" type="number" pInputText [(ngModel)]="product.peso" class="custom-input" placeholder="Ingrese el peso"/>
+        <input pInputText id="peso" type="number" [(ngModel)]="product.peso" class="custom-input" placeholder="Ingrese el peso"/>
         <select [(ngModel)]="unit" (change)="convertWeight()" class="custom-select">
           <option value="lbs">Libras</option>
           <option value="kg">Kilogramos</option>
@@ -30,7 +30,7 @@
       <label for="marca">Marca</label>
       <p-dropdown [options]="marcas" [(ngModel)]="product.marca" placeholder="Seleccione una marca" optionLabel="label" class="custom-dropdown"></p-dropdown>
     </div>
-    <div class="field col-12 text-right">
+    <div class="field col-12 text-right mt-4">
       <div class="flex flex-row-reverse flex-wrap gap-2">
         <div class="flex align-items-center justify-content-center mx-2">
           <button pButton type="button" label="Aceptar" icon="pi pi-check" (click)="saveProduct()" class="p-button-success custom-button px-6"></button>
