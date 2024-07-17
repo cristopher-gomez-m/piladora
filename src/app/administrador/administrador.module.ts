@@ -9,8 +9,8 @@ import { AddProductComponent } from './pages/add-product/add-product.component';
 import { EditProductComponent } from './pages/edit-product/edit-product.component';
 import { ViewProductComponent } from './pages/view-product/view-product.component';
 import { AdministradorRoutingModule } from './administrador-routing.module';
-
-
+import { TableComponent } from '../shared/components/table/table.component';
+import { MaterialModule } from '../material/material.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +26,8 @@ import { AdministradorRoutingModule } from './administrador-routing.module';
     AdministradorRoutingModule,
     AddUserComponent,
     ViewUserComponent,
+    TableComponent,
+    MaterialModule
   ]
 })
 export class AdministradorModule { }

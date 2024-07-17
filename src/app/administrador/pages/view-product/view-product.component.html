@@ -1,1 +1,16 @@
-<p>view-product works!</p>
+<app-table
+  [data]="products"
+  [columns]="columns"
+  [globalFilterFields]="['name','categoria']"
+  [rows]="5"
+  [rowsPerPageOptions]="[5, 10, 20]"
+  [showActions]="true"
+  [canModify]="true"
+  [canDelete]="true"
+  [showAddButton]="true"
+  (add)="onAddProduct()"
+  (modify)="onModifyProduct($event)"
+  (delete)="onDeleteProduct($event)"
+></app-table>
+
+<app-add-product #addProduct></app-add-product>

@@ -24,7 +24,7 @@ export class NavbarComponent implements OnInit {
   constructor(private roleService: RoleService, private router: Router) {}
 
   ngOnInit() {
-    this.userRole = 'operador'; // Aquí puedes obtener el rol del usuario desde tu servicio de autenticación
+    this.userRole = 'administrador'; // Aquí puedes obtener el rol del usuario desde tu servicio de autenticación
     this.menuItems = this.roleService.getMenuItemsForRole(this.userRole);
   }
 

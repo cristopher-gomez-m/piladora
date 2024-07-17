@@ -8,6 +8,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { Accion, TableColumns } from '../../../core/models/tabla-column-action';
 import { DynamicPipe } from '../../pipes/pipescolumn-value.pipe';
+import { PesoPipe } from '../../pipes/pipeLibr.pipe';
 
 
 @Component({
@@ -25,7 +26,7 @@ import { DynamicPipe } from '../../pipes/pipescolumn-value.pipe';
   ],
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css'],
-  providers: [CurrencyPipe, DatePipe, DecimalPipe],
+  providers: [CurrencyPipe, DatePipe, DecimalPipe, PesoPipe],
 })
 export class TableComponent implements OnInit {
   @ViewChild('dt2') table: Table | undefined;

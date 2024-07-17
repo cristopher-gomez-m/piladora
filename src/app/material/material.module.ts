@@ -12,8 +12,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { TableModule } from 'primeng/table';
 import { ToolbarModule } from 'primeng/toolbar';
-
-
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   declarations: [],
@@ -31,7 +30,9 @@ import { ToolbarModule } from 'primeng/toolbar';
     InputTextModule,
     PasswordModule,
     TableModule,
-    ToolbarModule
+    ToolbarModule,
+    DialogModule,
+
   ]
 })
 export class MaterialModule { }
