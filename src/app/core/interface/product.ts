@@ -15,5 +15,7 @@ export enum Categoria {
 }
 
 export enum Status {
-  A = "A",
+  Activo = "A",
+  Inactivo = "I",
+  Eliminado = "E",
 }

@@ -9,7 +9,6 @@ import { TableComponent } from '../shared/components/table/table.component';
 
 @NgModule({
   declarations: [
-    ViewProductOpComponent,
     EditProductOpComponent
   ],
   imports: [
@@ -17,7 +16,9 @@ import { TableComponent } from '../shared/components/table/table.component';
     OperadorRoutingModule,
     HttpClientModule,
     TableComponent
-
+  ],
+  exports: [
+    EditProductOpComponent
   ]
 })
 export class OperadorModule { }

@@ -48,6 +48,7 @@ input[pInputText] {
   border: 1px solid #2ecc71;
   border-radius: 4px;
   padding: 5px 10px;
+  font-size: 1.15rem;
 }
 
 input[pInputText]:focus {
@@ -126,11 +127,6 @@ input[pInputText]:focus {
   .header-section {
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .add-button {
-    margin-left: 0;
-    margin-top: 10px;
   }
 
   .card {

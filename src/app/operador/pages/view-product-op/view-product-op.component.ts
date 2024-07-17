@@ -1,17 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TableComponent } from '../../../shared/components/table/table.component';
-import { ProductServicesService } from '../../../core/services/product-services.service';
 import { product } from '../../../core/interface/product';
-import { HttpClientModule  } from '@angular/common/http';
+import { ProductServicesService } from '../../../core/services/product.service';
 
 @Component({
   selector: 'app-view-product-op',
   templateUrl: './view-product-op.component.html',
-  standalone: false,
+  standalone: true,
+  imports: [CommonModule, TableComponent],
   styleUrls: ['./view-product-op.component.css']
 })
-export class ViewProductOpComponent implements OnInit{
+export class ViewProductOpComponent implements OnInit {
 
   products: product[] = [];
   columns = [
@@ -29,34 +29,29 @@ export class ViewProductOpComponent implements OnInit{
   }
 
   getProducts(): void {
-    this.productService.getProducts()
-      .subscribe(
-        (data:product[]) => {
-          this.products = data;
-          console.log('Products:', this.products);
-        },
-        (error) => {
-          console.error('Error fetching products', error);
-        }
-      );
+    this.productService.getProducts().subscribe(
+      (data: product[]) => {
+        this.products = data;
+        console.log('Products:', this.products);
+      },
+      (error) => {
+        console.error('Error fetching products', error);
+      }
+    );
   }
 
-    onAddProduct() {
-      console.log('Add product');
-      // Lógica para agregar un producto
-    }
+  onAddProduct() {
+    console.log('Add product');
+    // Lógica para agregar un producto
+  }
 
-    onModifyProduct(product: any) {
-      console.log('Modify product', product);
-      // Lógica para modificar un producto
-    }
+  onModifyProduct(product: product) {
+    console.log('Modify product', product);
+    // Lógica para modificar un producto
+  }
 
-    onDeleteProduct(product: any) {
-      console.log('Delete product', product);
-      // Lógica para eliminar un producto
-    }
-
-    // deleteProduct(id: number) {
-    //   this.products = this.products.filter(product => product.id !== id);
-    // }
+  onDeleteProduct(product: product) {
+    console.log('Delete product', product);
+    // Lógica para eliminar un producto
+  }
 }
