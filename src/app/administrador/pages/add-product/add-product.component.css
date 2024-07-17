@@ -1,0 +1,44 @@
+.custom-form {
+  padding: 1rem;
+}
+
+.custom-form .field {
+  margin-bottom: 1rem;
+}
+
+.custom-input:focus, .custom-select:focus, .custom-dropdown .p-dropdown-label-container {
+  border-color: #4CAF50; /* Cambia el color del borde a verde */
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Agrega una sombra sutil */
+}
+
+.custom-dropdown .p-dropdown {
+  width: 100%; /* Asegura que el dropdown ocupe todo el ancho del contenedor */
+}
+
+.custom-button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 576px) {
+  .custom-form {
+    padding: 0.5rem;
+  }
+
+  .custom-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.875rem;
+  }
+
+  .p-inputgroup > .custom-dropdown .p-dropdown {
+    border-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.p-dropdown .p-dropdown-trigger:focus {
+  outline: none; /* Elimina el contorno de enfoque predeterminado */
+  border-color: #4CAF50; /* Cambia el color del borde */
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Agrega una sombra sutil */
+}

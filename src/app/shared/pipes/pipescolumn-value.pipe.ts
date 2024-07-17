@@ -1,13 +1,15 @@
 import { Pipe, PipeTransform, Injector } from '@angular/core';
 import { CurrencyPipe, DatePipe, DecimalPipe } from '@angular/common';
+import { PesoPipe } from './pipeLibr.pipe';
 
 @Pipe({
   name: 'dynamicPipe',
   standalone: true
 })
+
 export class DynamicPipe implements PipeTransform {
 
-  constructor(private injector: Injector) {}
+  constructor(private injector: Injector) { }
 
   transform(value: any, pipeToken: string, ...pipeArgs: any[]): any {
     let pipe: PipeTransform;
@@ -22,7 +24,9 @@ export class DynamicPipe implements PipeTransform {
       case 'decimal':
         pipe = this.injector.get(DecimalPipe);
         break;
-      // Agrega más pipes aquí según sea necesario
+      case 'kg':
+        pipe = this.injector.get(PesoPipe);
+        break;
       default:
         return value;
     }

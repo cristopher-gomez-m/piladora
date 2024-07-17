@@ -1,14 +1,14 @@
 <div class="card">
   <div class="header-section flex flex-row-reverse flex-wrap">
-    <div class="add-button">
+    <div class="add-button pb-2">
       <button *ngIf="showAddButton" (click)="onAdd()" pButton pRipple type="button" icon="pi pi-plus"
-        label="Add"></button>
+        label="Agregar" class="px-6 py-3"></button>
     </div>
-    <p-iconField iconPosition="right">
+    <p-iconField iconPosition="right" class="pb-2">
       <p-inputIcon>
         <i class="pi pi-search"></i>
       </p-inputIcon>
-      <input pInputText type="text" (input)="onGlobalFilter($event)" placeholder="Search" />
+      <input pInputText type="text" (input)="onGlobalFilter($event)" placeholder="Search"  class="px-6 py-3"/>
     </p-iconField>
   </div>
 
@@ -32,11 +32,11 @@
           </ng-container>
           <ng-template #noPipe>
             <ng-container *ngIf="col.field === 'status'">
-              <div class="centerStatus">
-              <span class="status-label" [ngClass]="{'status-available': product[col.field] === 1, 'status-unavailable': product[col.field] === 0}">
-                  {{ product[col.field] === 1 ? 'Disponible' : 'No disponible' }}
+
+              <span class="status-label" [ngClass]="{'status-available': product[col.field] === 'A', 'status-unavailable': product[col.field] != 'A'}">
+                  {{ product[col.field] === 'A' ? 'Disponible' : 'No disponible' }}
                 </span>
-                </div>
+
             </ng-container>
             <ng-container *ngIf="col.field !== 'status'">
               {{ product[col.field] }}
