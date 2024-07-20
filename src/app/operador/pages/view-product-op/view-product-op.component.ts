@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { TableComponent } from '../../../shared/components/table/table.component';
-import { product } from '../../../core/interface/product';
+import { product } from '../../../core/interface/Products/product';
 import { ProductServicesService } from '../../../core/services/product.service';
 
 @Component({

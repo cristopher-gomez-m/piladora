@@ -1,3 +1,5 @@
+import { Marca } from "../Marca/marca";
+
 export interface product {
   id:             number;
   name:           string;
@@ -7,6 +9,7 @@ export interface product {
   status:         Status;
   fecha_creacion: Date;
   creado_por:     number;
+  id_marca:       Marca;
 }
 
 export enum Categoria {

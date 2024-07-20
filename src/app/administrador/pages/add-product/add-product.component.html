@@ -1,18 +1,23 @@
-<p-dialog header="Agregar Productos" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '75vw', maxWidth: '900px', height: '70vh', maxHeight: '800px'}">
-  <div class="formgrid grid p-fluid custom-form">
+<p-dialog header="Agregar Productos" [(visible)]="display" [modal]="true" [responsive]="true"
+  [style]="{width: '75vw', maxWidth: '900px', height: '70vh', maxHeight: '800px'}">
+
+  <form class="formgrid grid p-fluid custom-form" [formGroup]="form" (ngSubmit)="saveProduct($event)">
     <div class="field col-12 sm:col-6">
       <label for="codigo">Código</label>
-      <input pInputText id="codigo" type="text" [(ngModel)]="product.codigo" class="custom-input" placeholder="Ingrese el código"/>
+      <input pInputText id="codigo" type="text" formControlName="codigo" class="custom-input"
+        placeholder="Ingrese el código" />
     </div>
     <div class="field col-12 sm:col-6">
       <label for="categoria">Categoría</label>
-      <p-dropdown [options]="categorias" [(ngModel)]="product.categoria" placeholder="Seleccione una categoría" optionLabel="name" class="custom-dropdown"></p-dropdown>
+      <p-dropdown [options]="categorias" formControlName="categoria" placeholder="Seleccione una categoría"
+        optionLabel="name" class="custom-dropdown"></p-dropdown>
     </div>
     <div class="field col-12 sm:col-6">
       <label for="peso">Peso por unidad</label>
       <div class="p-inputgroup">
-        <input pInputText id="peso" type="number" [(ngModel)]="product.peso" class="custom-input" placeholder="Ingrese el peso"/>
-        <select [(ngModel)]="unit" (change)="convertWeight()" class="custom-select">
+        <input pInputText id="peso" type="number" formControlName="peso" class="custom-input"
+          placeholder="Ingrese el peso" />
+        <select formControlName="unit" (change)="convertWeight()" class="custom-select border-1">
           <option value="lbs">Libras</option>
           <option value="kg">Kilogramos</option>
         </select>
@@ -20,25 +25,49 @@
     </div>
     <div class="field col-12 sm:col-6">
       <label for="precio">Precio</label>
-      <p-inputNumber [(ngModel)]="product.precio" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="custom-input" placeholder="Ingrese el precio"></p-inputNumber>
+      <p-inputNumber formControlName="precio" inputId="currency-us" mode="currency" currency="USD" locale="en-US"
+        class="custom-input" placeholder="Ingrese el precio"></p-inputNumber>
     </div>
+
     <div class="field col-12 sm:col-6">
       <label for="proveedor">Proveedor</label>
-      <p-dropdown [options]="proveedores" [(ngModel)]="product.proveedor" placeholder="Seleccione un proveedor" optionLabel="label" class="custom-dropdown"></p-dropdown>
+      <p-dropdown [options]="proveedores" formControlName="proveedor" placeholder="Seleccione un proveedor"
+        optionLabel="name" optionValue="id" class="custom-dropdown"></p-dropdown>
     </div>
+
     <div class="field col-12 sm:col-6">
       <label for="marca">Marca</label>
-      <p-dropdown [options]="marcas" [(ngModel)]="product.marca" placeholder="Seleccione una marca" optionLabel="label" class="custom-dropdown"></p-dropdown>
+      <p-dropdown [options]="marcas" formControlName="marca" placeholder="Seleccione una marca"
+                  optionLabel="name" optionValue="id" class="custom-dropdown"></p-dropdown>
     </div>
+
     <div class="field col-12 text-right mt-4">
       <div class="flex flex-row-reverse flex-wrap gap-2">
+
         <div class="flex align-items-center justify-content-center mx-2">
-          <button pButton type="button" label="Aceptar" icon="pi pi-check" (click)="saveProduct()" class="p-button-success custom-button px-6"></button>
+          <button pButton type="submit" label="Aceptar" icon="pi pi-check" class="p-button-success custom-button px-6"
+          [disabled]="!form.valid"
+          >
+          </button>
         </div>
+
         <div class="flex align-items-center justify-content-center mx-2">
-          <button pButton type="button" label="Cancelar" icon="pi pi-times" (click)="display=false" class="p-button-secondary custom-button px-6"></button>
+          <button pButton type="button" label="Cancelar" icon="pi pi-times" (click)="display=false"
+            class="p-button-secondary custom-button px-6"></button>
         </div>
       </div>
     </div>
-  </div>
-</p-dialog>
+
+    <div class="footer-text card flex justify-content-center gap-2 mt-3">
+      <p>
+      Derechos reservados. Recuerda poner correctamente los datos. El peso se guardará en <b>libras</b> y el precio en
+      <b>USD</b>.
+      Cualquier novedad, contactarse con la administración.
+      </p>
+      </div>
+
+        </form>
+        <hr class="class-hr">
+        <span>&copy; Piladora </span> |
+        Siempre tu mejor opción...
+      </p-dialog>

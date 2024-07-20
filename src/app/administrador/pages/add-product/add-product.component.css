@@ -18,7 +18,7 @@
 
 ::ng-deep .custom-input:focus,
 ::ng-deep .custom-select:focus,
-::ng-deep .custom-dropdown.p-dropdown:focus {
+::ng-deep .custom-dropdown.p-dropdown:hover {
   border-color: #4CAF50; /* Cambia el color del borde a verde */
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.5); /* Agrega una sombra sutil */
 }
@@ -44,3 +44,14 @@
     border-bottom-left-radius: 0;
   }
 }
+
+
+.footer-text {
+  text-align: center;
+  padding: 1rem;
+}
+
+.footer-text p {
+  margin: 0.5rem 0;
+}
+
