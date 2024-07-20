@@ -6,33 +6,46 @@ import { SidebarModule } from 'primeng/sidebar';
 import { MenuModule } from 'primeng/menu';
 import { MenuItem, RoleService } from '../../../core/services/Rol.service';
 import { TabMenuModule } from 'primeng/tabmenu';
-
+import { SessionService } from '../../../core/services/session.service';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterModule, ButtonModule, SidebarModule, MenuModule, TabMenuModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ButtonModule,
+    SidebarModule,
+    MenuModule,
+    TabMenuModule,
+  ],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css'
+  styleUrl: './navbar.component.css',
 })
-
-
 export class NavbarComponent implements OnInit {
   menuItems: MenuItem[] = [];
   userRole!: string;
-
-  constructor(private roleService: RoleService, private router: Router) {}
+  token!: string;
+  constructor(
+    private roleService: RoleService,
+    private router: Router,
+    private sessionService: SessionService
+  ) {}
 
   ngOnInit() {
-    this.userRole = 'administrador'; // Aquí puedes obtener el rol del usuario desde tu servicio de autenticación
-    this.menuItems = this.roleService.getMenuItemsForRole(this.userRole);
+    //this.userRole = this.sessionService.role; // Aquí puedes obtener el rol del usuario desde tu servicio de autenticación
+    this.sessionService.token.subscribe(token=>{
+      this.token = token;
+    })
+    this.sessionService.role.subscribe(role=>{
+      this.userRole = role;
+      this.menuItems = this.roleService.getMenuItemsForRole(this.userRole);
+    })
+    //this.token = this.sessionService.token;
   }
 
   logout() {
-    // Aquí deberías implementar la lógica para cerrar sesión
-    // Por ejemplo, podrías limpiar el almacenamiento local, redirigir al inicio de sesión, etc.
-    // Aquí se muestra un ejemplo simple de redirección al inicio de sesión:
+    this.sessionService.logout();
     this.router.navigate(['/login']);
   }
 }
-

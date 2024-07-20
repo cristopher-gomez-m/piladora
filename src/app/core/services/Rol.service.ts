@@ -8,7 +8,7 @@ export class RoleService {
     let menuItems: MenuItem[];
 
     switch (role) {
-      case 'administrador':
+      case "administrador":
         menuItems = [
           { label: 'Dashboard', icon: 'pi pi-home', route: '/administrador/home'},
           { label: 'Usuarios', icon: 'pi pi-users', route: '/administrador/usuarios' },
