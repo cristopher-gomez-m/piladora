@@ -1,43 +1,68 @@
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* altura del contenedor */
-    margin: 0; /* quita el margen por defecto */
-  }
-  
-  .form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px; /* espacio adicional alrededor del contenedor */
-  }
-  
-  .form-field {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 23px; /* separación entre campos */
-    width: 250px; /* ancho de los campos de texto */
-  }
-  
-  .form-field label {
-    margin-bottom: 10px; /* separación entre label y input */
-  }
-  
-  .form-field input,.form-field p-password {
-    width: 100%; /* ancho del input y password */
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* altura del contenedor */
+  margin: 0; /* quita el margen por defecto */
+  background-color: #d7ffe1; /* fondo verde claro */
+}
 
-  .p-button {
-    text-decoration: none;
-  }
-  
-  .p-button.font-bold.form-field {
-    font-weight: bold;
-  }
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px; /* espacio adicional alrededor del contenedor */
+  background-color: #ffffff; /* fondo blanco para el formulario */
+  border-radius: 8px; /* bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* sombra ligera */
+}
 
+.form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 23px; /* separación entre campos */
+  width: 300px; /* ancho de los campos de texto */
+}
 
-  .form-image {
-    margin-bottom: 20px; /* Espacio entre la imagen y el primer campo */
+.form-field label {
+  margin-bottom: 10px; /* separación entre label y input */
+}
+
+.form-field input,
+.form-field p-password {
+  width: 100%; /* ancho del input y password */
+  border: 1px solid #d1e7dd; /* borde verde claro */
+  border-radius: 4px; /* bordes redondeados */
+  padding: 10px; /* espacio interior del input */
+}
+
+.form-field input:focus,
+.form-field p-password:focus {
+  border-color: #0f5132; /* borde verde oscuro al enfocar */
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25); /* sombra verde clara */
+}
+
+.p-button:hover {
+  background-color: #157347; /* fondo verde más oscuro al pasar el ratón */
+}
+
+.p-error {
+  color: #dc3545; /* color rojo para mensajes de error */
+  font-size: 12px; /* tamaño de fuente más pequeño */
+  margin-top: 5px; /* espacio superior */
+}
+
+.form-image {
+  margin-bottom: 20px; /* Espacio entre la imagen y el primer campo */
+  max-width: 100px; /* ancho máximo de la imagen */
+}
+
+.form-container {
+  text-align: center; /* texto centrado */
+}
+
+small {
+  text-align: left; /* texto de error alineado a la izquierda */
+  width: 100%; /* ancho completo */
 }

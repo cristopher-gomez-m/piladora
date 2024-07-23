@@ -8,28 +8,23 @@
         type="button"
         icon="pi pi-plus"
         label="Agregar"
+        class="btn-green"
       ></button>
     </div>
-
     <p-inputGroup class="input-group-small">
-      <input type="text" [(ngModel)]="searchTerm" pInputText placeholder="buscar usuario" class="input-small"/>
+      <input type="text" [(ngModel)]="searchTerm" pInputText placeholder="Buscar usuario" class="input-small"/>
       <button
         type="button"
         pButton
         icon="pi pi-search"
         (click)="onSearch()"
-        class="button-small"
+        class="button-small btn-green"
       ></button>
     </p-inputGroup>
-</div>
+  </div>
   <p-table
     [value]="usuarios"
-    [tableStyle]="{
-      'min-width': '55rem',
-      'padding-top': '50px',
-      width: '800px',
-      margin: '0 auto'
-    }"
+    [tableStyle]="{ 'min-width': '55rem', 'padding-top': '50px', width: '800px', margin: '0 auto' }"
     styleClass="custom-table-width"
   >
     <ng-template pTemplate="header">
@@ -40,6 +35,7 @@
         <th>Acciones</th>
       </tr>
     </ng-template>
+
     <ng-template pTemplate="body" let-user let-i="rowIndex">
       <tr>
         <td>{{ i + 1 }}</td>
@@ -79,6 +75,7 @@
     [first]="first"
   ></p-paginator>
 </div>
+
 <p-dialog
   header="Actualiza tu información"
   [(visible)]="displayEditDialog"
@@ -146,6 +143,6 @@
       severity="secondary"
       (click)="displayEditDialog = false"
     ></p-button>
-    <p-button label="Guardar" (click)="saveUser()"></p-button>
+    <p-button label="Guardar" class="btn-green" (click)="saveUser()"></p-button>
   </div>
 </p-dialog>

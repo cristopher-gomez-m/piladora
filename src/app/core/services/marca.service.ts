@@ -12,10 +12,7 @@ export class MarcaService {
 
   constructor(private http: HttpClient) { }
 
-
-
   getMarcasByProveedor(proveedorId: number): Observable<Marca[]> {
     return this.http.get<Marca[]>(`${this.apiUrl}/proveedor?proveedorId=${proveedorId}`);
   }
-
 }

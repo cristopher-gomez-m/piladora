@@ -1,14 +1,22 @@
 export interface CreateProductoDTO {
   name: string
-  proveedor_id: number
-  marca_name: string
+  proveedorId: number
+  marcaName: string
   peso: number
   precio: number
   categoria: Categoria;
-  status: Status;
   creado_por: number;
   stock: number
-  tipo: TipoStock;
+}
+
+export interface ModifaProductoDTO{
+  name: string;
+  id_marca: number;
+  peso: number;
+  precio: number;
+  creado_por: number;
+  categoria: string;
+  status: string;
 }
 
 export enum Categoria {
@@ -16,13 +24,3 @@ export enum Categoria {
   Integral = "integral",
 }
 
-export enum Status {
-  Activo = "A",
-  Inactivo = "I",
-  Eliminado = "E",
-}
-
-export enum TipoStock {
-  Ingreso = "ingreso",
-  Salida = "salida"
-}

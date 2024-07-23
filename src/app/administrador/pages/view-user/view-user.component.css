@@ -1,38 +1,69 @@
+.user-list-container {
+  max-width: 80%;
+  margin: 0 auto;
+  margin-top: 3rem;
+  padding: 2rem;
+}
 
-  .user-list-container {
-    max-width: 80%;
-    margin: 0 auto;
-    margin-top: 3rem;
-    padding: 2rem;
-  }
-  
-  .shear-add{
-    margin-bottom: 3rem;
-  }
+.shear-add {
+  margin-bottom: 3rem;
+}
 
-  .bt-agg{
-    margin-left: 20px;
-  }
+.bt-agg {
+  margin-left: 20px;
+}
 
+.input-group-small {
+  max-width: 250px; /* Ajusta esto según tus necesidades */
+}
 
-  .search-icon {
-    cursor: pointer;
-    font-size: 1.2em;
-    margin-right: 0.5rem;
-  }
-  
+.input-small {
+  width: 100%; /* Asegura que el input ocupe todo el espacio disponible en el p-inputGroup */
+}
 
-  .input-group-small {
-    max-width: 250px; /* Ajusta esto según tus necesidades */
-  }
-  
-  .input-small {
-    width: 100%; /* Asegura que el input ocupe todo el espacio disponible en el p-inputGroup */
-  }
-  
-  .shear-add {
-    align-items: center; /* Alinea verticalmente los elementos */
-  }
+.shear-add {
+  align-items: center; /* Alinea verticalmente los elementos */
+}
+
+.button-small {
+  height: 2rem; /* Asegúrate de que la altura coincida con la del input */
+  padding: 0 0.5rem; /* Ajusta el padding horizontal según sea necesario */
+  font-size: 15px; /* Opcional: ajusta el tamaño de la fuente para que coincida con el input */
+  line-height: 1; /* Ajusta la línea de altura para centrar el texto/icono verticalmente */
+  box-sizing: border-box; /* Asegura que el padding y border se incluyan en la altura total */
+}
+
+/* Custom styles for buttons */
+.btn-green {
+  background-color: #28a745 !important;
+  border-color: #28a745 !important;
+  color: #fff !important;
+}
+
+.btn-green:hover {
+  background-color: #218838 !important;
+  border-color: #1e7e34 !important;
+}
+
+.btn-red {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  color: #fff !important;
+}
+
+.btn-red:hover {
+  background-color: #c82333 !important;
+  border-color: #bd2130 !important;
+}
+
+.p-button-sm {
+  height: 2rem; /* Asegúrate de que la altura coincida con la del input */
+  padding: 0 0.5rem; /* Ajusta el padding horizontal según sea necesario */
+  font-size: 15px; /* Opcional: ajusta el tamaño de la fuente para que coincida con el input */
+  line-height: 1; /* Ajusta la línea de altura para centrar el texto/icono verticalmente */
+  box-sizing: border-box; /* Asegura que el padding y border se incluyan en la altura total */
+}
+
 .form-row {
   display: flex;
   align-items: center;
@@ -126,14 +157,4 @@
 .p-confirm-dialog .p-button.p-button-danger.p-button-text {
   border: none !important;
   box-shadow: none !important;
-}
-
-
-
-.button-small {
-  height: 2rem; /* Asegúrate de que la altura coincida con la del input */
-  padding: 0 0.5rem; /* Ajusta el padding horizontal según sea necesario */
-  font-size: 15px; /* Opcional: ajusta el tamaño de la fuente para que coincida con el input */
-  line-height: 1; /* Ajusta la línea de altura para centrar el texto/icono verticalmente */
-  box-sizing: border-box; /* Asegura que el padding y border se incluyan en la altura total */
 }

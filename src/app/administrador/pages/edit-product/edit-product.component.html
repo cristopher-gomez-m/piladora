@@ -1,1 +1,81 @@
-<p>edit-product works!</p>
+<p-dialog header="Editar Productos" [(visible)]="display" [modal]="true" [responsive]="true"
+  [style]="{width: '75vw', maxWidth: '900px', height: '70vh', maxHeight: '800px'}">
+
+  <form class="formgrid grid p-fluid custom-form" [formGroup]="form" (ngSubmit)="updateProduct($event)">
+    <div class="field col-12 sm:col-6">
+      <label for="codigo">Código</label>
+      <input pInputText id="codigo" type="text" formControlName="name" class="custom-input" placeholder="Ingrese el código" />
+      <small *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)" class="p-error">
+        El código es obligatorio y debe tener al menos 3 caracteres.
+      </small>
+    </div>
+
+    <div class="field col-12 sm:col-6">
+      <label for="categoria">Categoría</label>
+      <p-dropdown [options]="categorias" formControlName="categoria" placeholder="Seleccione una categoría" optionLabel="name" optionValue="value" class="custom-dropdown"></p-dropdown>
+      <small *ngIf="f['categoria'].invalid && (f['categoria'].dirty || f['categoria'].touched)"  class="p-error">
+        La categoría es obligatoria.
+      </small>
+    </div>
+
+    <div class="field col-12 sm:col-6">
+      <label for="peso">Peso por unidad</label>
+      <div class="p-inputgroup">
+        <input pInputText id="peso" type="number" formControlName="peso" class="custom-input" placeholder="Ingrese el peso" />
+        <select (change)="convertWeight()" class="custom-select border-1" [value]="unit">
+          <option value="lbs">Libras</option>
+          <option value="kg">Kilogramos</option>
+        </select>
+      </div>
+      <small *ngIf="f['peso'].invalid && (f['peso'].dirty || f['peso'].touched)"  class="p-error">
+        El peso es obligatorio y debe ser mayor a 0.</small>
+    </div>
+
+    <div class="field col-12 sm:col-6">
+      <label for="precio">Precio</label>
+      <p-inputNumber formControlName="precio" inputId="currency-us" mode="currency" currency="USD" locale="en-US" class="custom-input" placeholder="Ingrese el precio"></p-inputNumber>
+      <small *ngIf="f['precio'].invalid && (f['precio'].dirty || f['precio'].touched)" class="p-error">
+        El precio es obligatorio y debe ser mayor a 0.
+      </small>
+    </div>
+
+    <div class="field col-12 sm:col-6">
+      <label for="proveedor">Proveedor</label>
+      <p-dropdown [options]="proveedores" formControlName="proveedorId" placeholder="Seleccione un proveedor"
+      optionLabel="name" optionValue="id" class="custom-dropdown" ></p-dropdown>
+      <small *ngIf="f['proveedorId'].invalid && (f['proveedorId'].dirty || f['proveedorId'].touched)" class="p-error">
+        El proveedor es obligatorio.
+      </small>
+    </div>
+
+    <div class="field col-12 sm:col-6">
+      <label for="marca">Marca</label>
+      <p-dropdown [options]="marcas" formControlName="marcaName" placeholder="Seleccione una marca" optionLabel="name" optionValue="name" class="custom-dropdown"></p-dropdown>
+      <small *ngIf="f['marcaName'].invalid && (f['marcaName'].dirty || f['marcaName'].touched)"  class="p-error">
+        Escoga un proveedor, la marca es obligatoria.</small>
+    </div>
+
+    <div class="field col-12 text-right mt-4">
+      <div class="flex flex-row-reverse flex-wrap gap-2">
+        <div class="flex align-items-center justify-content-center mx-2 card flex justify-content-center gap-2">
+          <p-confirmDialog />
+          <button pButton type="submit" label="Aceptar" icon="pi pi-check" class="p-button-success custom-button px-6" [disabled]="!form.valid" [outlined]="true"></button>
+        </div>
+        <div class="flex align-items-center justify-content-center mx-2">
+          <button pButton type="button" label="Cancelar" icon="pi pi-times" (click)="display=false" class="p-button-secondary custom-button px-6"></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-text card flex justify-content-center gap-2 mt-3">
+      <p>
+        Derechos reservados. Recuerda poner correctamente los datos. El peso se guardará en <b>libras</b> y el precio en <b>USD</b>.
+        Cualquier novedad, contactarse con la administración.
+      </p>
+    </div>
+
+  </form>
+  <hr class="class-hr">
+  <span>&copy; Piladora </span> |
+  Siempre tu mejor opción...
+</p-dialog>

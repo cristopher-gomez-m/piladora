@@ -13,4 +13,20 @@
   (delete)="onDeleteProduct($event)"
 ></app-table>
 
-<app-add-product #addProduct></app-add-product>
+<app-add-product #addProduct (productAdded)="onProductAdded()"></app-add-product>
+
+<app-edit-product #edtProduct (productAdded)="onProductAdded()"></app-edit-product>
+
+<p-dialog header="Confirmar Eliminación" [(visible)]="displayDelete" [modal]="true" [responsive]="true"
+  [style]="{width: '50vw', maxWidth: '600px'}" [closable]="false">
+
+  <p-confirmDialog></p-confirmDialog>
+  <div class="confirmation-content">
+    <p>¿Estás seguro que deseas eliminar este producto?</p>
+    <div class="confirmation-buttons">
+      <button pButton type="button" label="Aceptar" icon="pi pi-check" class="p-button-success p-mr-2" (click)="deleteProduct($event)"></button>
+      <button pButton type="button" label="Cancelar" icon="pi pi-times" class="p-button-secondary" (click)="displayDelete = false"></button>
+    </div>
+  </div>
+</p-dialog>
+<p-toast></p-toast>

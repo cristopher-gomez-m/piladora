@@ -16,6 +16,8 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { MessagesModule } from 'primeng/messages';
 
 @NgModule({
   declarations: [],
@@ -37,7 +39,9 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
     ToolbarModule,
     DialogModule,
     ConfirmPopupModule,
-    ToastModule
+    ConfirmDialogModule,
+    ToastModule,
+    MessagesModule
 
   ]
 })
