@@ -1,0 +1,84 @@
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.search-card {
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: block;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.products-container {
+  display: flex;
+  overflow-x: auto;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.product-button {
+  margin-right: 10px;
+  flex: 0 0 auto;
+  background-color: #909490 !important;
+  border-color: #c0ffc2;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.product-button:focus {
+  transform: scale(1.05);
+  background-color: #4caf50 !important;
+}
+
+.chart-card {
+  width: 100%;
+  max-width: 80%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.chart {
+  width: 100%;
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pie-chart-wrapper {
+  width: 35%;
+}
+
+.pie-chart {
+  width: 70%;
+  height: 100%; /* Set the desired static height */
+}
+
+.chartline {
+  width: 45%;
+  align-items: center;
+}
+
+.title {
+  color: #909490;
+  border-color: #c0ffc2;
+}
+

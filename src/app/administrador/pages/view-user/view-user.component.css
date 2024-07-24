@@ -1,43 +1,44 @@
-.user-list-container {
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
   max-width: 80%;
-  margin: 0 auto;
-  margin-top: 3rem;
   padding: 2rem;
 }
 
-.shear-add {
-  margin-bottom: 3rem;
+.user-list-container {
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
-.bt-agg {
-  margin-left: 20px;
+.header-actions {
+  margin-bottom: 2rem;
 }
 
 .input-group-small {
-  max-width: 250px; /* Ajusta esto según tus necesidades */
+  max-width: 250px;
 }
 
 .input-small {
-  width: 100%; /* Asegura que el input ocupe todo el espacio disponible en el p-inputGroup */
-}
-
-.shear-add {
-  align-items: center; /* Alinea verticalmente los elementos */
+  width: 100%;
 }
 
 .button-small {
-  height: 2rem; /* Asegúrate de que la altura coincida con la del input */
-  padding: 0 0.5rem; /* Ajusta el padding horizontal según sea necesario */
-  font-size: 15px; /* Opcional: ajusta el tamaño de la fuente para que coincida con el input */
-  line-height: 1; /* Ajusta la línea de altura para centrar el texto/icono verticalmente */
-  box-sizing: border-box; /* Asegura que el padding y border se incluyan en la altura total */
+  height: 2rem;
+  padding: 0 0.5rem;
+  font-size: 14px;
+  line-height: 1;
+  box-sizing: border-box;
 }
 
-/* Custom styles for buttons */
 .btn-green {
   background-color: #28a745 !important;
   border-color: #28a745 !important;
   color: #fff !important;
+
 }
 
 .btn-green:hover {
@@ -45,23 +46,12 @@
   border-color: #1e7e34 !important;
 }
 
-.btn-red {
-  background-color: #dc3545 !important;
-  border-color: #dc3545 !important;
-  color: #fff !important;
-}
-
-.btn-red:hover {
-  background-color: #c82333 !important;
-  border-color: #bd2130 !important;
-}
-
 .p-button-sm {
-  height: 2rem; /* Asegúrate de que la altura coincida con la del input */
-  padding: 0 0.5rem; /* Ajusta el padding horizontal según sea necesario */
-  font-size: 15px; /* Opcional: ajusta el tamaño de la fuente para que coincida con el input */
-  line-height: 1; /* Ajusta la línea de altura para centrar el texto/icono verticalmente */
-  box-sizing: border-box; /* Asegura que el padding y border se incluyan en la altura total */
+  height: 2rem;
+  padding: 0 0.5rem;
+  font-size: 14px;
+  line-height: 1;
+  box-sizing: border-box;
 }
 
 .form-row {
@@ -76,6 +66,18 @@
   font-size: 15px;
 }
 
+input[pInputText] {
+  border: 1px solid #2ecc71;
+  border-radius: 4px;
+  padding: 2px 10px;
+  font-size: 1.15rem;
+}
+
+input[pInputText]:focus {
+  border-color: #27ae60;
+  outline: none;
+}
+
 .form-input {
   flex: 1;
   height: 2.5rem;
@@ -84,21 +86,19 @@
   box-sizing: border-box;
   font-size: 15px;
   border: 1px solid #ced4da;
-  border-radius: 0.375rem; /* Borde redondeado */
+  border-radius: 0.375rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-input:focus {
   border-color: #007bff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Sombra al enfocar */
-  outline: none; /* Eliminar borde predeterminado */
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  outline: none;
 }
 
 .form-input:hover {
   border-color: #0056b3;
 }
-
-/* Resto del CSS */
 
 .flex {
   display: flex;
@@ -106,6 +106,10 @@
 
 .align-items-center {
   align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 .gap-2 {
@@ -124,24 +128,12 @@
   margin-bottom: 2rem;
 }
 
-.w-6rem {
-  width: 6rem;
-}
-
 .font-semibold {
   font-weight: 600;
 }
 
 .flex-auto {
   flex: 1;
-}
-
-.input-small {
-  height: 2rem;
-  width: 100%;
-  padding: 0.5rem;
-  box-sizing: border-box;
-  font-size: 15px;
 }
 
 .label-small {

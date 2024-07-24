@@ -34,6 +34,7 @@ import {  Router } from '@angular/router';
     PasswordModule,
     MessagesModule,
     ToastModule,
+
   ],
   providers: [MessageService],
 })

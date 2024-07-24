@@ -18,6 +18,9 @@ import { ToastModule } from 'primeng/toast';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { MessagesModule } from 'primeng/messages';
+import { ChartModule } from 'primeng/chart';
+import { HttpClientModule } from '@angular/common/http';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 @NgModule({
   declarations: [],
@@ -41,8 +44,10 @@ import { MessagesModule } from 'primeng/messages';
     ConfirmPopupModule,
     ConfirmDialogModule,
     ToastModule,
-    MessagesModule
-
+    MessagesModule,
+    ChartModule,
+    HttpClientModule,
+    SelectButtonModule
   ]
 })
 export class MaterialModule { }

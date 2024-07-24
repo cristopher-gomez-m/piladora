@@ -29,6 +29,7 @@ export class UserService {
     return await firstValueFrom(this.http.post<User>(this.apiUrl, userData));
   }
 
+
   async delete(userId:number):Promise<ApiResponse> {
     try {
       let url = `http://localhost:3000/user/${userId}`;

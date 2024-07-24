@@ -1,14 +1,29 @@
-<app-table
-  [data]="products"
-  [columns]="columns"
-  [globalFilterFields]="['name','categoria']"
-  [rows]="5"
-  [rowsPerPageOptions]="[5, 10, 20]"
-  [showActions]="true"
-  [canModify]="true"
-  [canDelete]="true"
-  [showAddButton]="true"
-  (add)="onAddProduct()"
-  (modify)="onModifyProduct($event)"
-  (delete)="onDeleteProduct($event)"
-></app-table>
+<app-table [data]="products" [columns]="columns" [globalFilterFields]="['name','categoria']" [rows]="5"
+  [rowsPerPageOptions]="[5, 10, 20]" [showActions]="true" [canModify]="true" [canDelete]="false" [showAddButton]="false"
+  (add)="onAddProduct()" (modify)="onModifyProduct($event)" (delete)="onDeleteProduct($event)"></app-table>
+
+<div class="card">
+
+  <div class="flex-wrap">
+    <div class="container  font-bold border-round m-4 ">
+      <h2 class="title">Productos</h2>
+      <h4 class="subtitle">Productos Seleccionados</h4>
+      <div *ngFor="let stock of productosAddStock" class="product-item">
+        <span class="px-2">{{ stock.nombre }}</span>
+        <div class="quantity-controls">
+          <button class="quantity-button" (click)="decrementarCantidad(stock)">-</button>
+          <span class="quantity">{{ stock.cantidad }}</span>
+          <button class="quantity-button" (click)="incrementarCantidad(stock)">+</button>
+        </div>
+      </div>
+
+      <h4 class="subtitle">Estado</h4>
+      <div class="flex justify-content-center">
+        <p-selectButton [options]="stateOptions" [(ngModel)]="value" optionLabel="label" optionValue="value" />
+      </div>
+
+      <button (click)="aceptarSeleccion()" class="accept-button">Aceptar</button>
+    </div>
+  </div>
+
+</div>

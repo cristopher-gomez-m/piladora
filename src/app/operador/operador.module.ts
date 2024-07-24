@@ -5,20 +5,27 @@ import { EditProductOpComponent } from './pages/edit-product-op/edit-product-op.
 import { OperadorRoutingModule } from './operador-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { TableComponent } from '../shared/components/table/table.component';
+import { MaterialModule } from '../material/material.module';
+import { ButtonModule } from 'primeng/button';
+import { HomeComponent } from './pages/home/home.component';
 
 
 @NgModule({
   declarations: [
-    EditProductOpComponent
+    EditProductOpComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,
     OperadorRoutingModule,
     HttpClientModule,
-    TableComponent
+    TableComponent,
+    MaterialModule,
+    ButtonModule
   ],
   exports: [
-    EditProductOpComponent
+    EditProductOpComponent,
+    HomeComponent
   ]
 })
 export class OperadorModule { }

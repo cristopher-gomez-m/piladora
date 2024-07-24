@@ -1,5 +1,15 @@
-<div class="user-list-container">
-  <div class="shear-add flex flex-row-reverse flex-wrap items-center">
+<div class="card ">
+  <div class="header-actions flex flex-wrap items-center justify-between mb-3">
+    <p-inputGroup class="input-group-small">
+      <input type="text" [(ngModel)]="searchTerm" pInputText placeholder="Buscar usuario" class="input-small px-4 py-3"/>
+      <button
+        type="button"
+        pButton
+        icon="pi pi-search"
+        (click)="onSearch()"
+        class="btn-green"
+      ></button>
+    </p-inputGroup>
     <div class="bt-agg">
       <button
         (click)="onAdd()"
@@ -8,24 +18,14 @@
         type="button"
         icon="pi pi-plus"
         label="Agregar"
-        class="btn-green"
+        class="btn-green px-6 py-3"
       ></button>
     </div>
-    <p-inputGroup class="input-group-small">
-      <input type="text" [(ngModel)]="searchTerm" pInputText placeholder="Buscar usuario" class="input-small"/>
-      <button
-        type="button"
-        pButton
-        icon="pi pi-search"
-        (click)="onSearch()"
-        class="button-small btn-green"
-      ></button>
-    </p-inputGroup>
   </div>
   <p-table
     [value]="usuarios"
-    [tableStyle]="{ 'min-width': '55rem', 'padding-top': '50px', width: '800px', margin: '0 auto' }"
-    styleClass="custom-table-width"
+    [tableStyle]="{ 'min-width': '55rem', width: '100%', margin: '0 auto' }"
+    styleClass="card custom-table-width"
   >
     <ng-template pTemplate="header">
       <tr>
@@ -41,7 +41,6 @@
         <td>{{ i + 1 }}</td>
         <td>{{ user.username }}</td>
         <td>{{ user.nombre }}</td>
-
         <td>
           <p-button
             icon="pi pi-pencil"

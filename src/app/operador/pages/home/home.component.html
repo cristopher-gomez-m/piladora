@@ -1,1 +1,22 @@
-<H1>BIENVENIDO OPERADOR A LA EXPLOTACION LABORAL ;V</H1>
+<div class="stats-container p-d-flex p-flex-column p-ai-center p-p-3">
+  <h2 class="title">Estadística anual de almacenamiento en stock</h2>
+  <div class="search-card p-card p-p-3 p-mb-3">
+    <input type="text" pInputText placeholder="Buscar producto..." (input)="onSearch($event)"
+      class="search-input p-mb-3" />
+    <div class="products-container p-d-flex p-flex-row p-flex-nowrap p-overflow-x-auto">
+      <button *ngFor="let product of filteredProducts" pButton type="button" label="{{ product.name }}"
+        (click)="onProductSelect(product.id)" class="product-button p-button-raised p-button-rounded p-mr-2"></button>
+    </div>
+  </div>
+
+  <div class="chart-card p-card p-p-3 p-shadow-4">
+    <p-chart baseChart type="bar" [data]="data" [options]="options" class="chart"></p-chart>
+
+    <div class="chart-container p-d-flex p-flex-row p-ai-center">
+      <div class="pie-chart-wrapper">
+        <p-chart type="pie" [data]="pieData" [options]="pieOptions" class="pie-chart"></p-chart>
+      </div>
+      <p-chart type="line" [data]="data" [options]="options" class="chartline"></p-chart>
+    </div>
+  </div>
+</div>

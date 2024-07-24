@@ -8,7 +8,7 @@ export class User{
         public name:string='',
         public username:string='',
         public password:string='',
-        public role:Role=new Role(),
+        public role: string = '',     // Cambiado de Role a string
         public cedula:string='',
         public apellido:string='',
 

@@ -42,8 +42,8 @@ import { DialogModule } from 'primeng/dialog';
 export class ViewUserComponent implements OnInit {
   selectedUser: User = new User();
   public usuarios: User[] = [];
-  
-  
+
+
   displayEditDialog: boolean = false;
   public page: number = 1;
   public limit: number = 10;
@@ -125,7 +125,7 @@ export class ViewUserComponent implements OnInit {
   }
   editUser(user: User) {
     console.log('Edit user:', user);  // Log selected user
-    this.selectedUser = { ...user }; 
+    this.selectedUser = { ...user };
     this.displayEditDialog = true;
   }
 
@@ -148,5 +148,5 @@ export class ViewUserComponent implements OnInit {
       }
     });
   }
-  
+
 }
