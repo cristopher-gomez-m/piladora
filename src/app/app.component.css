@@ -1,0 +1,9 @@
+
+/* Content container to fill available space */
+.content-container {
+  overflow-y: auto; /* Ensure content scrolls if it overflows */
+  background-color: #f5f5f5; /* Light background for the content area */
+}
+
+
+
