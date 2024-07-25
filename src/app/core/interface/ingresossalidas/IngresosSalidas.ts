@@ -12,3 +12,10 @@ export interface Datum {
   creado_por:     number;
   status:         string;
 }
+
+export interface CreateProductoStockDTO {
+  id_producto: number;
+  stock: number;
+  tipo: string;
+  creado_por: number;
+}

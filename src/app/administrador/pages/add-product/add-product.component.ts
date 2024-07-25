@@ -23,11 +23,8 @@ export class AddProductComponent implements OnInit {
   unit: string = 'lbs';
 
   categorias: any = [];
-
   proveedores: Proveedor[] = [];
-
   marcas: Marca[] = [];
-
   convert = [
     { name: 'kg', code: 'kg' },
     { name: 'lbs', code: 'lbs' }
@@ -36,17 +33,39 @@ export class AddProductComponent implements OnInit {
   form!: FormGroup;
   originalWeight: number = 0;
 
+  constructor(private confirmationService: ConfirmationService,
+    private messageService: MessageService,
+    private _fb: FormBuilder,
+    private productservice: ProductServicesService,
+    private proveedorService: ProveedorService,
+    private marcaService: MarcaService) { }
+
+  ngOnInit() {
+    this.categorias = [
+      { name: 'Blanco', value: 'blanco' },
+      { name: 'Integral', value: 'integral' }
+    ];
+
+    this.proveedorService.getProveedores().subscribe(
+      (data: Proveedor[]) => {
+        this.proveedores = data;
+      },
+      (error) => {
+        console.error('Error fetching proveedor', error);
+      }
+    );
+
+    this.initForm();
+  }
+
   initForm(): void {
     this.form = this._fb.group({
-      // id: [0, [Validators.required]],
       name: ['', [Validators.required, Validators.minLength(3)]],
       peso: ['', [Validators.required, Validators.min(0.1)]],
       precio: [0, [Validators.required, Validators.min(0.01)]],
       categoria: ['', [Validators.required]],
       marcaName: ['', [Validators.required]],
-      proveedorId: ['1', [Validators.required]],
-      // status: [1, [Validators.required]],
-      // unit: ['lbs', [Validators.required]]
+      proveedorId: ['1', [Validators.required]]
     });
 
     this.form.get('proveedorId')?.valueChanges.subscribe(value => {
@@ -58,33 +77,6 @@ export class AddProductComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-
-    this.categorias = [
-      { name: 'Blanco', value: 'blanco' },
-      { name: 'Integral', value: 'integral' }
-    ];
-
-    this.proveedorService.getProveedores().subscribe(
-      (data: Proveedor[]) => {
-        this.proveedores = data;
-        console.log(data);
-      },
-      (error) => {
-        console.error('Error fetching proveedor', error);
-      }
-    );
-
-    this.initForm();
-  }
-
-  constructor(private confirmationService: ConfirmationService,
-    private messageService: MessageService,
-    private _fb: FormBuilder,
-    private productservice: ProductServicesService,
-    private proveedorService: ProveedorService,
-    private marcaService: MarcaService) { }
-
   saveProduct(event: Event) {
     this.convertWeightToLbs();
     this.confirmationService.confirm({
@@ -95,9 +87,8 @@ export class AddProductComponent implements OnInit {
         this.productservice.crearProductoConStock(this.form.value).subscribe(resp => {
           if (resp) {
             this.messageService.add({ severity: 'info', summary: 'Registrado', detail: 'Producto guardado', life: 3000 });
-            this.form.reset(); // Limpiar el formulario
-            this.display = false; // Cerrar el diálogo
-            this.productAdded.emit(); // Emitir el evento
+            console.log(resp);
+            this.resetForm(); // Limpiar el formulario y resetear proveedorId
           } else {
             this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo guardar el producto', life: 3000 });
           }
@@ -105,6 +96,7 @@ export class AddProductComponent implements OnInit {
       },
       reject: () => {
         this.messageService.add({ severity: 'error', summary: 'Cancelado', detail: 'Vuelve a intentarlo', life: 3000 });
+        this.resetForm(); // Limpiar el formulario y resetear proveedorId
       }
     });
   }
@@ -135,14 +127,22 @@ export class AddProductComponent implements OnInit {
   }
 
   updateMarca(proveedorId: number) {
-    this.marcaService.getMarcasByProveedor(proveedorId).subscribe((marcas: Marca[]) => {
-      this.marcas = marcas;
-      console.log(marcas);
-    });
+    if (proveedorId) {
+      this.marcaService.getMarcasByProveedor(proveedorId).subscribe((marcas: Marca[]) => {
+        this.marcas = marcas;
+      });
+    }
   }
 
   mostrarDialogo() {
     this.display = true;
+  }
+
+  resetForm() {
+    this.form.reset();
+    this.form.get('proveedorId')?.setValue('1');
+    this.display = false;
+    this.productAdded.emit();
   }
 
   get f() {

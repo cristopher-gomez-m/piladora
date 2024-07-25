@@ -13,7 +13,8 @@ import { HomeComponent } from './pages/home/home.component';
 @NgModule({
   declarations: [
     EditProductOpComponent,
-    HomeComponent
+    HomeComponent,
+    ViewProductOpComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +26,8 @@ import { HomeComponent } from './pages/home/home.component';
   ],
   exports: [
     EditProductOpComponent,
-    HomeComponent
+    HomeComponent,
+    ViewProductOpComponent
   ]
 })
 export class OperadorModule { }

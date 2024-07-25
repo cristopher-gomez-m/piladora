@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Datum, Ingresossalidas } from '../interface/ingresossalidas/IngresosSalidas';
+import { CreateProductoStockDTO, Datum, Ingresossalidas } from '../interface/ingresossalidas/IngresosSalidas';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +29,9 @@ export class IngresoSalidaService {
   // Obtener todas las salidas para un producto
   findAllSalidas(id_producto: number): Observable<Ingresossalidas<Datum[]>> {
     return this.http.get<Ingresossalidas<Datum[]>>(`${this.apiUrl}/salidas/${id_producto}`);
+  }
+
+  createStockEntry(stockEntry: CreateProductoStockDTO): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}`, stockEntry);
   }
 }

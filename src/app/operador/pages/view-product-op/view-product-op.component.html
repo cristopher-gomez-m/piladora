@@ -3,16 +3,15 @@
   (add)="onAddProduct()" (modify)="onModifyProduct($event)" (delete)="onDeleteProduct($event)"></app-table>
 
 <div class="card">
-
   <div class="flex-wrap">
-    <div class="container  font-bold border-round m-4 ">
+    <div class="container font-bold border-round m-4">
       <h2 class="title">Productos</h2>
       <h4 class="subtitle">Productos Seleccionados</h4>
       <div *ngFor="let stock of productosAddStock" class="product-item">
-        <span class="px-2">{{ stock.nombre }}</span>
+        <span class="product-name flex">{{ stock.nombre }}</span>
         <div class="quantity-controls">
           <button class="quantity-button" (click)="decrementarCantidad(stock)">-</button>
-          <span class="quantity">{{ stock.cantidad }}</span>
+          <input type="text" pInputText [(ngModel)]="stock.cantidad" class="quantity-input" />
           <button class="quantity-button" (click)="incrementarCantidad(stock)">+</button>
         </div>
       </div>
@@ -25,5 +24,4 @@
       <button (click)="aceptarSeleccion()" class="accept-button">Aceptar</button>
     </div>
   </div>
-
 </div>

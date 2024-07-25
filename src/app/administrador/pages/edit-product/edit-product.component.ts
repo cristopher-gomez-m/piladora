@@ -66,7 +66,6 @@ export class EditProductComponent implements OnInit {
     this.proveedorService.getProveedores().subscribe(
       (data: Proveedor[]) => {
         this.proveedores = data;
-        console.log(data);
       },
       (error) => {
         console.error('Error fetching proveedor', error);
@@ -145,7 +144,6 @@ export class EditProductComponent implements OnInit {
   updateMarca(proveedorId: number) {
     this.marcaService.getMarcasByProveedor(proveedorId).subscribe((marcas: Marca[]) => {
       this.marcas = marcas;
-      console.log(marcas);
     });
   }
 

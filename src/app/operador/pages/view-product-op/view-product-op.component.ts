@@ -5,6 +5,7 @@ import { product } from '../../../core/interface/Products/product';
 import { ProductServicesService } from '../../../core/services/product.service';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { FormsModule } from '@angular/forms';
+import { IngresoSalidaService } from '../../../core/services/ingresosSalida.service';
 
 export interface ProductosAddStock {
   id: number;
@@ -12,12 +13,16 @@ export interface ProductosAddStock {
   cantidad: number;
 }
 
+export interface CreateProductoStockDTO {
+  id_producto: number;
+  stock: number;
+  tipo: string;
+  creado_por: number;
+}
 
 @Component({
   selector: 'app-view-product-op',
   templateUrl: './view-product-op.component.html',
-  standalone: true,
-  imports: [CommonModule, TableComponent, SelectButtonModule, FormsModule],
   styleUrls: ['./view-product-op.component.css']
 })
 export class ViewProductOpComponent implements OnInit {
@@ -32,8 +37,10 @@ export class ViewProductOpComponent implements OnInit {
   ];
 
   productosAddStock: ProductosAddStock[] = [];
+  stateOptions: any[] = [{ label: 'Ingreso', value: 'ingreso' }, { label: 'Salida', value: 'salida' }];
+  value: string = 'Ingreso';
 
-  constructor(private productService: ProductServicesService) { }
+  constructor(private productService: ProductServicesService, private stockService: IngresoSalidaService) { }
 
   ngOnInit(): void {
     this.getProducts();
@@ -57,7 +64,6 @@ export class ViewProductOpComponent implements OnInit {
   }
 
   onModifyProduct(product: product) {
-    console.log('Modify product', product);
     const existingProduct = this.productosAddStock.find(p => p.id === product.id);
     if (!existingProduct) {
       this.productosAddStock.push({
@@ -86,12 +92,25 @@ export class ViewProductOpComponent implements OnInit {
   }
 
   aceptarSeleccion(): void {
-    // Lógica para manejar la selección de productos
-    console.log('Productos seleccionados:', this.productosAddStock);
+    const stockEntries: CreateProductoStockDTO[] = this.productosAddStock.map(producto => ({
+      id_producto: producto.id,
+      stock: producto.cantidad,
+      tipo: this.value,
+      creado_por: 1
+    }));
+
+    stockEntries.forEach(entry => {
+      this.stockService.createStockEntry(entry).subscribe(
+        response => {
+          console.log('Stock entry created:', response);
+        },
+        error => {
+          console.error('Error creating stock entry', error);
+        }
+      );
+    });
+
+    // Resetea el formulario
     this.productosAddStock = [];
   }
-
-  stateOptions: any[] = [{ label: 'Ingreso', value: 'ingreso' }, { label: 'Salida', value: 'salida' }];
-
-  value: string = 'Ingreso';
 }
